@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PocketCam — Phone camera for PC</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0d14;--panel:#121824;--panel2:#182131;--line:#293448;--text:#eef3ff;--muted:#9caac0;--accent:#8b7cff;--green:#47d7a0;--red:#ff7585}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#20254b 0,transparent 50%),var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+main{max-width:1100px;margin:auto;padding:28px 20px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px}.brand{display:flex;gap:12px;align-items:center;font-weight:800;font-size:20px;letter-spacing:-.5px}.logo{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#a395ff,#6c5ce7);box-shadow:0 8px 30px #7567ff44;font-size:21px}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:12px}.pill:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#64748b;margin-right:7px}.pill.live:before{background:var(--green);box-shadow:0 0 10px #47d7a0}.hero{margin:20px 0 26px}.eyebrow{color:#b6aaff;font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.05;letter-spacing:-1.8px;margin:10px 0 12px}.hero p{color:var(--muted);max-width:650px;margin:0;font-size:16px}.layout{display:grid;grid-template-columns:330px minmax(0,1fr);gap:18px}.panel{background:linear-gradient(180deg,#151d2b,#111722);border:1px solid var(--line);border-radius:22px;padding:22px;min-width:0;box-shadow:0 15px 50px #0002}.panel h2{font-size:17px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;margin:0 0 20px}.roles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:18px}.role{border:1px solid var(--line);background:var(--panel2);color:var(--muted);border-radius:12px;padding:12px 8px;cursor:pointer;font-weight:700}.role.active{color:white;border-color:#887aff;background:#6557cf2c;box-shadow:inset 0 0 0 1px #887aff33}.field{display:block;color:#c5cede;font-size:12px;font-weight:700;margin:15px 0 7px}.input{width:100%;border:1px solid var(--line);background:#0b111b;color:white;padding:13px 14px;border-radius:11px;font:inherit;outline:none}.input:focus{border-color:#9285ff;box-shadow:0 0 0 3px #8b7cff20}.hint{font-size:12px;color:var(--muted);margin-top:7px}.btn{border:0;border-radius:12px;background:linear-gradient(135deg,#9b8dff,#7060e8);color:white;font-weight:800;padding:13px 16px;width:100%;cursor:pointer;margin-top:16px;font:inherit}.btn:disabled{opacity:.5;cursor:not-allowed}.btn.secondary{background:#202a3a;border:1px solid var(--line);margin-top:9px}.status{padding:12px 13px;background:#0c121c;border:1px solid var(--line);border-radius:12px;color:var(--muted);font-size:13px;margin-top:14px;overflow-wrap:anywhere}.status.good{color:var(--green)}.status.bad{color:var(--red)}.preview-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.preview-head h2{margin:0}.screen{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,#0a101b,#171d31);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;place-items:center}.screen video{width:100%;height:100%;object-fit:contain;background:#05070b}.empty{text-align:center;color:var(--muted);padding:20px}.empty .cam{font-size:38px;margin-bottom:8px}.empty strong{display:block;color:#dfe6f5;font-size:15px}.empty span{font-size:12px}.screen .tag{position:absolute;bottom:12px;left:12px;background:#060a12bb;border:1px solid #ffffff24;padding:5px 9px;border-radius:8px;font-size:11px;color:#dbe3f5;backdrop-filter:blur(8px)}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.metric{background:#0c121c;border:1px solid var(--line);border-radius:12px;padding:12px}.metric span{display:block;color:var(--muted);font-size:11px}.metric strong{display:block;margin-top:3px;font-size:14px}.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.tip{padding:16px;border:1px solid var(--line);background:#101722;border-radius:15px}.tip b{display:block;margin-bottom:5px;font-size:13px}.tip p{margin:0;color:var(--muted);font-size:12px}.note{margin-top:18px;color:var(--muted);font-size:12px;line-height:1.7}.note strong{color:#dce4f5}.hidden{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr}.tips{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.panel{padding:18px}}@media(max-width:450px){main{padding:18px 12px 40px}.metrics{grid-template-columns:1fr}.hero h1{letter-spacing:-1px}}
+</style>
+</head>
+<body>
+<main>
+<header class="top"><div class="brand"><div class="logo">◉</div> PocketCam</div><div class="pill" id="topState">Not connected</div></header>
+<section class="hero"><div class="eyebrow">Your phone. Your workstation.</div><h1>Turn your phone into<br> a PC camera.</h1><p>Stream live video and microphone audio from your phone to a PC browser with a room code. Hosted as a static site.</p></section>
+<div class="layout">
+<section class="panel">
+<h2>Connect your devices</h2><p class="sub">Open this same website on your phone and PC.</p>
+<div class="roles"><button class="role active" id="phoneRole" type="button">📱 Phone</button><button class="role" id="pcRole" type="button">🖥️ PC viewer</button></div>
+<label class="field" for="room">Room code</label><input class="input" id="room" maxlength="20" autocomplete="off" placeholder="e.g. STUDY-482" value="POCKET-482"><div class="hint">Use the exact same code on both devices. Only one phone and one PC per code.</div>
+<div id="phoneOptions"><label class="field" for="camera">Camera</label><select class="input" id="camera"><option value="environment">Back camera</option><option value="user">Front camera</option></select><label class="field" for="quality">Video quality</label><select class="input" id="quality"><option value="720">HD · 720p</option><option value="1080">Full HD · 1080p</option><option value="480">Smooth · 480p</option></select><label class="field"><input type="checkbox" id="audio" checked> Include phone microphone audio</label></div>
+<button class="btn" id="connect">Start phone camera</button><button class="btn secondary hidden" id="disconnect">Disconnect</button><div class="status" id="status" role="status" aria-live="polite">Choose a role and connect both devices.</div>
+<div class="note"><strong>Privacy:</strong> browser asks for camera/microphone permission when you start. Video/audio are sent peer-to-peer; a third-party signaling service helps devices find each other.</div>
+</section>
+<section class="panel">
+<div class="preview-head"><h2>Live preview</h2><span class="pill" id="streamState">Waiting for stream</span></div>
+<div class="screen"><video id="remoteVideo" autoplay playsinline controls class="hidden"></video><div class="empty" id="placeholder"><div class="cam">▣</div><strong>Your stream will appear here</strong><span>Connect the phone and PC using the same room code.</span></div><div class="tag" id="videoTag">NO SIGNAL</div></div>
+<div class="metrics"><div class="metric"><span>Connection</span><strong id="connectionMetric">Offline</strong></div><div class="metric"><span>Video</span><strong id="videoMetric">Waiting</strong></div><div class="metric"><span>Audio</span><strong id="audioMetric">Waiting</strong></div></div>
+<div class="tips"><div class="tip"><b>01 · Pair</b><p>Enter the same room code on your phone and PC.</p></div><div class="tip"><b>02 · Allow access</b><p>On your phone, allow camera and microphone permissions.</p></div><div class="tip"><b>03 · Keep it open</b><p>Leave the phone browser open and prevent its screen from sleeping.</p></div></div>
+</section>
+</div>
+<p class="note">GitHub Pages hosts this static site over HTTPS, which supports camera permissions. The browser uses PeerJS Cloud as a signaling broker and WebRTC for media. This is a community/demo approach, not a guaranteed production service. Bluetooth is not used. USB tethering can provide network connectivity, but does not create a system-wide webcam or microphone device. OBS can capture the PC viewer page as a Browser Source.</p>
+</main>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+(() => {
+const $ = id => document.getElementById(id);
+let role = "phone", peer = null, mediaCall = null, localStream = null, joined = false;
+function status(text, type=""){ $("status").textContent=text; $("status").className="status"+(type?" "+type:""); }
+function top(text, live=false){ $("topState").textContent=text; $("topState").className="pill"+(live?" live":""); }
+function setRole(next){ if(joined)return; role=next; $("phoneRole").classList.toggle("active",role==="phone"); $("pcRole").classList.toggle("active",role==="pc"); $("phoneOptions").classList.toggle("hidden",role!=="phone"); $("connect").textContent=role==="phone"?"Start phone camera":"Connect to phone"; }
+$("phoneRole").onclick=()=>setRole("phone"); $("pcRole").onclick=()=>setRole("pc");
+function safeRoom(){ return $("room").value.toUpperCase().replace(/[^A-Z0-9-]/g,"").slice(0,20); }
+function showStream(stream, local=false){
+  $("remoteVideo").srcObject=stream; $("remoteVideo").classList.remove("hidden"); $("placeholder").classList.add("hidden");
+  $("videoTag").textContent=local?"PHONE PREVIEW":"LIVE STREAM"; $("streamState").textContent=local?"Local preview":"Receiving";
+  $("videoMetric").textContent=stream.getVideoTracks().length?"Active":"No video";
+  $("audioMetric").textContent=stream.getAudioTracks().length?"Mic enabled":"No audio";
+  $("remoteVideo").play().catch(()=>{});
+}
+async function connect(){
+ if(joined)return;
+ if(!window.Peer)return status("PeerJS failed to load. Check your internet connection and refresh.", "bad");
+ const room=safeRoom(); if(!room)return status("Enter a room code.", "bad");
+ $("connect").disabled=true; status("Preparing connection…");
+ try{
+  if(role==="phone"){
+   if(!navigator.mediaDevices?.getUserMedia) throw new Error("Camera access requires HTTPS and a supported browser.");
+   const h=Number($("quality").value);
+   localStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:$("camera").value},width:{ideal:h},height:{ideal:Math.round(h*9/16)}},audio:$("audio").checked?{echoCancellation:true,noiseSuppression:true,autoGainControl:true}:false});
+   showStream(localStream,true);
+  }
+  const peerId=`pocketcam-${room.toLowerCase()}-${role}`;
+  peer=new Peer(peerId,{debug:1});
+  peer.on("open",()=>{
+   joined=true; $("connect").classList.add("hidden"); $("disconnect").classList.remove("hidden"); $("room").disabled=true;
+   top("Ready · "+room); $("connectionMetric").textContent="Waiting";
+   if(role==="phone"){
+    status("Phone camera ready. Now connect the PC viewer with the same room code.","good");
+    const tryCall=()=>{ if(!peer||peer.destroyed)return; const call=peer.call(`pocketcam-${room.toLowerCase()}-pc`,localStream); if(!call){status("Waiting for the PC viewer to be ready…");return;} mediaCall=call; call.on("stream",s=>showStream(s)); call.on("close",()=>status("PC viewer disconnected.")); call.on("error",e=>status("Call error: "+e.message,"bad")); };
+    // PeerJS does not expose a guaranteed remote-online check; call after PC opens.
+    setTimeout(tryCall,1600);
+   }else{
+    status("PC viewer is ready. Start the phone camera with the same room code.","good");
+    peer.on("call",call=>{ call.answer(); mediaCall=call; call.on("stream",s=>{showStream(s); $("connectionMetric").textContent="Connected"; top("Connected",true); status("Live phone video and audio received.","good");}); call.on("close",()=>{ $("connectionMetric").textContent="Disconnected"; }); call.on("error",e=>status("Call error: "+e.message,"bad")); });
+   }
+  });
+  peer.on("error",e=>{
+   let message=e.message||e.type;
+   if(e.type==="unavailable-id") message="This room/role is already in use. Choose a different room code and try again.";
+   status("Connection error: "+message,"bad");
+   $("connect").disabled=false;
+  });
+  peer.on("disconnected",()=>status("Signaling service disconnected. Try reconnecting.","bad"));
+ }catch(e){status("Could not start: "+e.message,"bad"); if(localStream){localStream.getTracks().forEach(t=>t.stop());localStream=null;} $("connect").disabled=false;}
+}
+$("connect").onclick=connect;
+$("disconnect").onclick=()=>{
+ if(mediaCall){try{mediaCall.close()}catch{}}
+ if(peer){try{peer.destroy()}catch{}}
+ if(localStream)localStream.getTracks().forEach(t=>t.stop());
+ peer=mediaCall=localStream=null; joined=false;
+ $("remoteVideo").srcObject=null; $("remoteVideo").classList.add("hidden"); $("placeholder").classList.remove("hidden");
+ $("videoTag").textContent="NO SIGNAL"; $("streamState").textContent="Waiting for stream"; $("connectionMetric").textContent="Offline"; $("videoMetric").textContent="Waiting"; $("audioMetric").textContent="Waiting";
+ $("connect").classList.remove("hidden"); $("connect").disabled=false; $("disconnect").classList.add("hidden"); $("room").disabled=false;
+ top("Not connected"); status("Disconnected. You can connect again.");
+};
+})();
+</script>
+</body></html>
